@@ -21,15 +21,17 @@
         <a href="#projektit">Projektit</a>
         <a href="#historia">Historia</a>
         <a href="#palaute">Palaute</a>
+        <button id="theme-toggle" aria-label="Vaihda teema">Vaalea</button>
     </nav>
 
     <!-- ================= MINUSTA ================= -->
     <section id="minusta">
         <h2>Minusta</h2>
         <p>
-            Olen opiskelija, joka on kiinnostunut teknologiasta, robotiikasta ja luovista konsepteista. 
-            Yksi projekteistani on futuristinen H.I.K.I.L.O.R.D.I-humanoidi, joka yhdistää treenirobotin, 
-            synkän estetiikan ja visuaalisen tarinankerronnan.
+            Olen lähes täysi-ikäinen junnu Oulusta, innostunut tekniikasta ja siitä, miten asiat
+            toimivat. Pelaaminen on ollut koko ikäni lähellä sydäntä – niin videopelit kuin
+            lautapelitkin – ja se taitaa olla suurin syy siihen, että kohtalo on tälle polulle meikäläisen tuonut.
+            Kerran kiinnostus teknologiaan voi yhdistyä vapaasti luoviin projekteihin ja robotiikkaan.
         </p>
     </section>
 
@@ -37,10 +39,10 @@
     <section id="taidot">
         <h2>Taidot</h2>
 
-        <div class="skill-bar"><div class="skill" style="width:90%;">HTML / CSS</div></div>
-        <div class="skill-bar"><div class="skill" style="width:75%;">JavaScript</div></div>
-        <div class="skill-bar"><div class="skill" style="width:80%;">Graafinen suunnittelu</div></div>
-        <div class="skill-bar"><div class="skill" style="width:85%;">Konseptisuunnittelu (H.I.K.I.L.O.R.D.I)</div></div>
+        <div class="skill-bar"><div class="skill" style="width:60%;">HTML / CSS</div></div>
+        <div class="skill-bar"><div class="skill" style="width:50%;">JavaScript</div></div>
+        <div class="skill-bar"><div class="skill" style="width:70%;">Graafinen suunnittelu</div></div>
+        <div class="skill-bar"><div class="skill" style="width:80%;">Konseptisuunnittelu (H.I.K.I.L.O.R.D.I)</div></div>
     </section>
 
     <!-- ================= PROJEKTIT ================= -->
@@ -80,15 +82,27 @@
     <section id="historia">
         <h2>Historia / CV</h2>
 
+        <h3>Koulutus</h3>
         <div class="timeline">
             <div class="timeline-entry">
-                <h3>2024 – 2026: Opiskelu</h3>
-                <p>Teknologian ja ohjelmoinnin opintoja, useita projekteja.</p>
+                <h4>2025 – Nykyhetki: Ammattikoulu</h4>
+                <p>Opiskelen Oulun seudun ammattiopistossa (Osaossa), Tieto- ja viestintätekniikan perustutkintoa, suuntautuen ohjelmointiin.</p>
             </div>
-
             <div class="timeline-entry">
-                <h3>2023 – 2024: Graafinen suunnittelu</h3>
-                <p>Brändikonsepteja ja visuaalisia projekteja.</p>
+                <h4>2016 – 2025: Peruskoulu</h4>
+                <p>Olen peruskoulun jokaiset 9 vuotta käynyt Kaukovainion Peruskoulussa, jonka lopulta päätin kasipökän keskiarvolla, johon kuului mukaanlukien kolme kymppiä. Matematiikka, TvT ja Tekniikasta (kovasta käsityöstä).</p>
+            </div>
+        </div>
+
+        <h3>Muu historia</h3>
+        <div class="timeline">
+            <div class="timeline-entry">
+                <h4>2024 – Nykyhetki: Vapaaehtoinen seurakuntanuori</h4>
+                <p>Isosena ja papuna toimimista, sekä yleisesti toiminnassa mukana olemista aktiivisesti. Seurakunnan toiminnassa olen ollut mukana käytännössä koko ikäni, jonka aikana olen oppinut paljon ihmisten kanssa toimimisesta.</p>
+            </div>
+            <div class="timeline-entry">
+                <h4>2025: Kesätyö apuohjaajana</h4>
+                <p>Lämsänjärven lastenpäivillä 2vk kesätöissä apuohjaajana, valvoen lasten toimintaa ja tekemässä heille mieluisan leirin.</p>
             </div>
         </div>
     </section>
@@ -122,5 +136,28 @@
         © 2026 Mikael Alaraappana
     </footer>
 
+    <script>
+        (function() {
+            const toggle = document.getElementById('theme-toggle');
+            const body = document.body;
+            function updateButton() {
+                toggle.textContent = body.classList.contains('light-theme') ? 'Tumma' : 'Vaalea';
+            }
+            // init
+            if (localStorage.getItem('theme') === 'light') {
+                body.classList.add('light-theme');
+            }
+            updateButton();
+            toggle.addEventListener('click', () => {
+                body.classList.toggle('light-theme');
+                if (body.classList.contains('light-theme')) {
+                    localStorage.setItem('theme', 'light');
+                } else {
+                    localStorage.removeItem('theme');
+                }
+                updateButton();
+            });
+        })();
+    </script>
 </body>
 </html>
